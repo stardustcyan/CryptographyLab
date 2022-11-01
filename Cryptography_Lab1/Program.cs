@@ -4,6 +4,12 @@ public class Program {
     private static string? key;
     private const int MAXN = 1024;
 
+    /**
+     * 从控制台输入读取明文
+     *
+     * @ret string 读取的明文内容
+     * @ret int    读取的明文长度
+     */
     private static Tuple<string, int> ReadPlainText()
     {
         string? res;
@@ -24,7 +30,10 @@ public class Program {
 
         return new Tuple<string, int>(res, res.Length);
     }
-
+    
+    /**
+     * 进行AES加密，并将加密结果写入本地文件
+     */
     private static void AesStrToFile()
     {
         string plainText;
@@ -36,7 +45,7 @@ public class Program {
         string cryptoResult = AES.Aes(plainText, key);
         Console.WriteLine("进行AES加密..................");
         Console.Write("加密完后的密文的ASCCI为：");
-        PrintASCCI(cryptoResult);
+        PrintASCII(cryptoResult);
 
         Console.Write("请输入你想要写进的文件名，比如'test.txt':");
         string? fileName = Console.ReadLine();
@@ -46,15 +55,77 @@ public class Program {
             Console.WriteLine("已经将密文写进" + fileName + "中了,可以在运行该程序的当前目录中找到它。");
         }
     }
+    
+    /**
+     * 从本地文件中读入密文
+     *
+     * @param fileName 本地文件地址
+     * @ret   string   读取的密文内容
+     */
+    private static string ReadStrFromFile(string fileName)
+    {
+        StreamReader sr;
+        try
+        { 
+            sr = new StreamReader(fileName);
+        }
+        catch (FileNotFoundException e)
+        { 
+            Console.WriteLine("打开文件出错，请确认文件存在当前目录下！");
+            return "";
+        }
 
+        var rdData = sr.ReadLine();
+        var res = rdData ?? "";
+        if (res is { Length: > MAXN })
+        {
+            Console.WriteLine("解密文件过大！");
+            return "";
+        }
+        sr.Close();
+
+        return res;
+    }
+    
+    /**
+     * 对密文进行解密，并将解密结果写入本地文件中
+     */
+    private static void DeAesFile()
+    {
+        Console.WriteLine("请输入要解密的文件名，该文件必须和本程序在同一个目录");
+        string? fileName = Console.ReadLine();
+        if (fileName != null)
+        {
+            string c = ReadStrFromFile(fileName);
+            Console.WriteLine("开始解密.........");
+            string cryptoResult = AES.DeAes(c, key);
+            Console.Write("解密后的明文ASCII为：");
+            PrintASCII(cryptoResult);
+            Console.WriteLine("明文为：{0}", cryptoResult);
+            WriteStrToFile(cryptoResult, fileName);
+            Console.WriteLine("现在可以打开{0}来查看解密后的密文了！", fileName);
+        }
+    }
+    
+    /**
+     * 将字符串写入文件
+     *
+     * @param str      要写入的字符串内容
+     * @param fileName 写入的目标文件
+     */
     private static void WriteStrToFile(string str, string fileName)
     {
         StreamWriter sw = new StreamWriter(fileName);
         sw.WriteLine(str);
         sw.Close();
     }
-
-    private static void PrintASCCI(string str)
+    
+    /**
+     * 在控制台中输出字符串对应的ASCII值
+     *
+     * @param str 输出的字符串
+     */
+    private static void PrintASCII(string str)
     {
         foreach (var t in str)
         {
@@ -91,5 +162,15 @@ public class Program {
             }
         }
         AesStrToFile();
+        Console.WriteLine("是否开始解密？1.解密 2.退出");
+        var choice = int.Parse(Console.ReadLine());
+        switch (choice)
+        {
+            case 1:
+                DeAesFile();
+                break;
+            default:
+                return;
+        }
     }
 }

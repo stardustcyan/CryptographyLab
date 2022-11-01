@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptographyLab", "CryptographyLab\CryptographyLab.csproj", "{5552942C-2ACB-4E92-A75C-A9F0EB468CDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryptography_Lab1", "Cryptography_Lab1\Cryptography_Lab1.csproj", "{5552942C-2ACB-4E92-A75C-A9F0EB468CDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryptography_Lab2", "Cryptography_Lab2\Cryptography_Lab2.csproj", "{FE6B58C8-27B0-4B48-BCEC-E97145D85830}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryptography_Lab4", "Cryptography_Lab4\Cryptography_Lab4.csproj", "{850CC8CD-F31C-4159-B5B5-55BE634AC05C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +16,13 @@ Global
 		{5552942C-2ACB-4E92-A75C-A9F0EB468CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5552942C-2ACB-4E92-A75C-A9F0EB468CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5552942C-2ACB-4E92-A75C-A9F0EB468CDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE6B58C8-27B0-4B48-BCEC-E97145D85830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE6B58C8-27B0-4B48-BCEC-E97145D85830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE6B58C8-27B0-4B48-BCEC-E97145D85830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE6B58C8-27B0-4B48-BCEC-E97145D85830}.Release|Any CPU.Build.0 = Release|Any CPU
+		{850CC8CD-F31C-4159-B5B5-55BE634AC05C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{850CC8CD-F31C-4159-B5B5-55BE634AC05C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{850CC8CD-F31C-4159-B5B5-55BE634AC05C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{850CC8CD-F31C-4159-B5B5-55BE634AC05C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
